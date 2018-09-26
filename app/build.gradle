@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
+
+    defaultConfig {
+        applicationId "com.quartzo.whatsappimages"
+        minSdkVersion 16
+        targetSdkVersion 28
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+
+    def androidxVersion = "1.0.0"
+
+    implementation "androidx.palette:palette:$androidxVersion"
+    implementation "com.google.android.material:material:$androidxVersion"
+    implementation "com.squareup.okhttp3:okhttp:3.10.0"
+    implementation files('libs/volley.jar')
+
+    implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
+}
