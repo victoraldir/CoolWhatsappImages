@@ -1,7 +1,7 @@
 
 [![Build Status](https://travis-ci.org/victoraldir/MakeYourAppMaterial.svg?branch=master)](https://travis-ci.org/victoraldir/MakeYourAppMaterial)
 
-# MakeYourAppMaterial
+# CoolWhatsappImages
 I redesigned an app to follow the Material Design guidelines and translate a set of static design mocks to a living and breathing app.
 
 # Screenshots

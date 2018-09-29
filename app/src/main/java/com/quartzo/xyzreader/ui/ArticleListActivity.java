@@ -10,10 +10,10 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -183,15 +183,15 @@ public class ArticleListActivity extends AppCompatActivity implements
         public void onBindViewHolder(final ViewHolder holder, int position) {
             mCursor.moveToPosition(position);
             holder.titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-            holder.subtitleView.setText(
-                    DateUtils.getRelativeTimeSpanString(
-                            mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
-                            System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
-                            DateUtils.FORMAT_ABBREV_ALL).toString()
-                            + " by "
-                            + mCursor.getString(ArticleLoader.Query.AUTHOR));
+//            holder..setText(
+//                    DateUtils.getRelativeTimeSpanString(
+//                            mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
+//                            System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
+//                            DateUtils.FORMAT_ABBREV_ALL).toString()
+//                            + " by "
+//                            + mCursor.getString(ArticleLoader.Query.AUTHOR));
 
-            holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+            //holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
 
             holder.imageLoader.getImageLoader().get(mCursor.getString(ArticleLoader.Query.THUMB_URL), new ImageLoader.ImageListener() {
                 @Override
@@ -206,7 +206,7 @@ public class ArticleListActivity extends AppCompatActivity implements
                         holder.thumbnailView.setImageDrawable(td);
                         td.startTransition(300);
                         if(!getResources().getBoolean(R.bool.isTablet)){
-                            holder.metaBar.setBackgroundColor(p.getDarkMutedColor(0xFF333333));
+                            holder.metaBar.setBackgroundColor(p.getLightMutedColor(0xFF333333));
                         }
 
                     }
@@ -227,10 +227,11 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.thumbnail) DynamicHeightImageView thumbnailView;
+        @BindView(R.id.thumbnail)
+        ImageView thumbnailView;
         @BindView(R.id.article_title) TextView titleView;
-        @BindView(R.id.article_subtitle) TextView subtitleView;
-        @BindView(R.id.meta_bar) LinearLayout metaBar;
+        @BindView(R.id.meta_bar)
+        FrameLayout metaBar;
         ImageLoaderHelper imageLoader;
 
         public ViewHolder(View view) {

@@ -20,10 +20,17 @@ android {
 dependencies {
 
     def androidxVersion = "1.0.0"
+    def room_version = "2.0.0-rc01"
+    def paging_version = "2.0.0-rc01"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
     implementation "androidx.palette:palette:$androidxVersion"
     implementation "com.google.android.material:material:$androidxVersion"
     implementation "com.squareup.okhttp3:okhttp:3.10.0"
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
     implementation files('libs/volley.jar')
 
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
